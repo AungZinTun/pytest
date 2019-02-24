@@ -1,0 +1,38 @@
+
+{% extends 'polls/poll.html' %}
+
+{% block content %}
+
+    <div class="panel panel-success ">
+      <br>
+      <br>
+<hr>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg">
+            
+                    
+                    <div class="card card-default">
+
+                            <h1 class="card-header">{{ question.question_text }}</h1>
+
+                        <ul>
+                        {% for choice in question.choice_set.all %}
+                            <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+                        {% endfor %}
+                        </ul>
+                        
+                        <a href="{% url 'polls:d' question.id %}">Vote again?</a>
+
+                    </div>
+            
+                      
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+{%  endblock %}
